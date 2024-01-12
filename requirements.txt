@@ -2,3 +2,6 @@ pandas
 numpy
 sentence-transformers
 umap-learn
+matplotlib
+scikit-learn
+plotly
