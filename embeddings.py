@@ -29,13 +29,18 @@ plt.scatter(embeddings_2d[:, 0], embeddings_2d[:, 1], marker = 'o')
 plt.title('Food App Review Embeddings')
 plt.show()
 
+print('line 32')
 # Apply K-means clustering
 num_clusters = 3
 kmeans = KMeans(n_clusters=num_clusters)
 cluster_labels = kmeans.fit_predict(embeddings_2d)
 
+print('line 38')
+
 # Add cluster labels as a new column to the DataFrame
 df['cluster_label'] = cluster_labels
+
+print('line 43')
 
 # Create a DataFrame for the data
 cluster_df = pd.DataFrame({
@@ -44,6 +49,8 @@ cluster_df = pd.DataFrame({
     'label': cluster_labels,
     'sentence': df['Review']
 })
+
+print('line 53')
 
 # Create an interactive scatter plot using plotly
 fig = px.scatter(
@@ -57,9 +64,13 @@ fig = px.scatter(
     height=600,  # Adjust the height as desired
 )
 
+print('line 67')
+
 fig.update_traces(
     marker=dict(size=8)  # Adjust the size value as needed
 )
+
+print('line 73')
 
 # Set the background color to black
 fig.update_layout(
@@ -68,18 +79,25 @@ fig.update_layout(
 
 fig.show()
 
+print('line 82')
+
 # Reduce dimensionality to 3 dimensions with UMAP
 reducer = UMAP(n_components=3, metric='cosine')
 embeddings_3d = reducer.fit_transform(embeddings)
+
+print('line 88')
 
 # Apply K-means clustering
 num_clusters = 3
 kmeans = KMeans(n_clusters=num_clusters)
 cluster_labels = kmeans.fit_predict(embeddings)
 
+print('line 95')
+
 # Add cluster labels as a new column to the DataFrame
 df['cluster_label'] = cluster_labels
 
+print('line 100')
 
 # Create a DataFrame for the data
 cluster_df = pd.DataFrame({
@@ -89,6 +107,8 @@ cluster_df = pd.DataFrame({
     'label': cluster_labels,
     'sentence': df['Review']
 })
+
+print('line 111')
 
 # Create a 3D scatter plot using plotly
 fig = px.scatter_3d(
@@ -100,10 +120,11 @@ fig = px.scatter_3d(
     labels={'label': 'Cluster'},
 )
 
+print('line 123')
+
 fig.update_traces(
     marker=dict(size=5)  # Adjust the size value as needed
 )
 
 fig.show()
-
-
+print('line 130')
